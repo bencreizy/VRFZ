@@ -52,7 +52,7 @@ export default function Dashboard() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-900 py-20">
+      <div className="min-h-screen bg-black py-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <Skeleton className="h-12 w-64 mx-auto mb-4" />
@@ -74,7 +74,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 py-20">
+    <div className="min-h-screen bg-black py-20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Your Dashboard</h2>

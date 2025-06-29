@@ -60,7 +60,7 @@ export default function Settings() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-900 py-20">
+      <div className="min-h-screen bg-black py-20">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <Skeleton className="h-12 w-64 mx-auto mb-12" />
@@ -77,7 +77,7 @@ export default function Settings() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 py-20">
+    <div className="min-h-screen bg-black py-20">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">Settings</h2>
