@@ -36,13 +36,13 @@ export default function Navigation() {
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href}>
-                <a 
-                  className={`nav-link text-white hover:text-cyan-400 transition-colors ${
+                <span 
+                  className={`nav-link text-white hover:text-cyan-400 transition-colors cursor-pointer ${
                     isActive(item.href) ? "active text-cyan-400" : ""
                   }`}
                 >
                   {item.label}
-                </a>
+                </span>
               </Link>
             ))}
           </div>
@@ -64,14 +64,14 @@ export default function Navigation() {
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <Link key={item.href} href={item.href}>
-                  <a 
-                    className={`text-white hover:text-cyan-400 transition-colors ${
+                  <span 
+                    className={`text-white hover:text-cyan-400 transition-colors cursor-pointer ${
                       isActive(item.href) ? "text-cyan-400" : ""
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
-                  </a>
+                  </span>
                 </Link>
               ))}
             </div>
