@@ -7,8 +7,8 @@ interface FingerprintButtonProps {
   className?: string;
 }
 
-// Clean fingerprint scanner interface
-function FingerprintScanner({ className = "", isLoading = false }: { className?: string; isLoading?: boolean }) {
+// Complete realistic fingerprint icon
+function CompleteFingerprint({ className = "", isLoading = false }: { className?: string; isLoading?: boolean }) {
   return (
     <svg
       className={className}
@@ -17,8 +17,8 @@ function FingerprintScanner({ className = "", isLoading = false }: { className?:
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <filter id="scanner-glow">
-          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+        <filter id="fingerprint-glow">
+          <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
           <feMerge> 
             <feMergeNode in="coloredBlur"/>
             <feMergeNode in="SourceGraphic"/>
@@ -26,60 +26,129 @@ function FingerprintScanner({ className = "", isLoading = false }: { className?:
         </filter>
       </defs>
       
-      {/* Scanner outline */}
+      {/* Complete outer fingerprint ridges - full oval shape */}
+      <ellipse
+        cx="50"
+        cy="50"
+        rx="35"
+        ry="40"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        fill="none"
+        filter="url(#fingerprint-glow)"
+      />
+      <ellipse
+        cx="50"
+        cy="50"
+        rx="30"
+        ry="35"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        fill="none"
+        filter="url(#fingerprint-glow)"
+      />
+      <ellipse
+        cx="50"
+        cy="50"
+        rx="25"
+        ry="30"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        fill="none"
+        filter="url(#fingerprint-glow)"
+      />
+      <ellipse
+        cx="50"
+        cy="50"
+        rx="20"
+        ry="25"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        fill="none"
+        filter="url(#fingerprint-glow)"
+      />
+      <ellipse
+        cx="50"
+        cy="50"
+        rx="15"
+        ry="20"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        fill="none"
+        filter="url(#fingerprint-glow)"
+      />
+      
+      {/* Inner core patterns */}
+      <ellipse
+        cx="50"
+        cy="50"
+        rx="10"
+        ry="15"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        fill="none"
+        filter="url(#fingerprint-glow)"
+      />
+      <ellipse
+        cx="50"
+        cy="50"
+        rx="6"
+        ry="10"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        fill="none"
+        filter="url(#fingerprint-glow)"
+      />
+      
+      {/* Central whorl pattern */}
       <circle
         cx="50"
         cy="50"
-        r="35"
+        r="3"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="1.5"
         fill="none"
-        filter="url(#scanner-glow)"
+        filter="url(#fingerprint-glow)"
       />
       
-      {/* Scanner grid lines */}
-      <g stroke="currentColor" strokeWidth="1" opacity="0.6">
-        <line x1="30" y1="30" x2="70" y2="30" />
-        <line x1="30" y1="40" x2="70" y2="40" />
-        <line x1="30" y1="50" x2="70" y2="50" />
-        <line x1="30" y1="60" x2="70" y2="60" />
-        <line x1="30" y1="70" x2="70" y2="70" />
-        
-        <line x1="30" y1="30" x2="30" y2="70" />
-        <line x1="40" y1="30" x2="40" y2="70" />
-        <line x1="50" y1="30" x2="50" y2="70" />
-        <line x1="60" y1="30" x2="60" y2="70" />
-        <line x1="70" y1="30" x2="70" y2="70" />
-      </g>
+      {/* Ridge details for realism */}
+      <path
+        d="M35 55 Q50 57, 65 55"
+        stroke="currentColor"
+        strokeWidth="1"
+        fill="none"
+        opacity="0.8"
+      />
+      <path
+        d="M30 65 Q50 67, 70 65"
+        stroke="currentColor"
+        strokeWidth="1"
+        fill="none"
+        opacity="0.8"
+      />
+      <path
+        d="M25 75 Q50 77, 75 75"
+        stroke="currentColor"
+        strokeWidth="1"
+        fill="none"
+        opacity="0.8"
+      />
       
-      {/* Scanner center crosshair */}
-      <g stroke="currentColor" strokeWidth="2" filter="url(#scanner-glow)">
-        <line x1="40" y1="50" x2="60" y2="50" />
-        <line x1="50" y1="40" x2="50" y2="60" />
-      </g>
-      
-      {/* Corner brackets */}
-      <g stroke="currentColor" strokeWidth="2" fill="none" filter="url(#scanner-glow)">
-        <path d="M25 35 L25 25 L35 25" />
-        <path d="M65 25 L75 25 L75 35" />
-        <path d="M75 65 L75 75 L65 75" />
-        <path d="M35 75 L25 75 L25 65" />
-      </g>
-      
-      {/* Scanning line effect when loading */}
-      {isLoading && (
-        <line
-          x1="20"
-          y1="50"
-          x2="80"
-          y2="50"
-          stroke="currentColor"
-          strokeWidth="1"
-          opacity="0.8"
-          filter="url(#scanner-glow)"
-          className="animate-pulse"
-        />
-      )}
+      {/* Top ridge details */}
+      <path
+        d="M35 35 Q50 33, 65 35"
+        stroke="currentColor"
+        strokeWidth="1"
+        fill="none"
+        opacity="0.8"
+      />
+      <path
+        d="M30 25 Q50 23, 70 25"
+        stroke="currentColor"
+        strokeWidth="1"
+        fill="none"
+        opacity="0.8"
+      />
     </svg>
   );
 }
@@ -99,8 +168,8 @@ export default function FingerprintButton({ onClick, isLoading = false, classNam
         disabled={isLoading}
         className="relative z-10 w-full h-full bg-transparent border-0 rounded-full p-6 hover:scale-110 hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300"
       >
-        {/* Clean fingerprint scanner interface on top */}
-        <FingerprintScanner 
+        {/* Complete fingerprint icon on top */}
+        <CompleteFingerprint 
           className={`w-full h-full text-cyan-400 ${isLoading ? 'animate-spin' : 'animate-fingerprint-scan'}`}
           isLoading={isLoading}
         />
