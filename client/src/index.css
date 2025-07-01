@@ -107,6 +107,8 @@
   
   .fingerprint-button {
     transition: all 0.3s ease;
+    background: none !important;
+    background-image: none !important;
   }
   
   .fingerprint-button:hover {

@@ -157,9 +157,9 @@ export default function FingerprintButton({ onClick, isLoading = false, classNam
   return (
     <div className="relative w-32 h-32">
       {/* Circuit board background - this replaces any fingerprint background */}
-      <div className="absolute inset-0 rounded-full border-2 border-cyan-400 overflow-hidden animate-pulse-glow">
-        <CircuitBoard className="absolute inset-0 opacity-60" />
-        <div className="absolute inset-0 bg-black/30 rounded-full"></div>
+      <div className="absolute inset-0 rounded-full border-2 border-cyan-400 overflow-hidden animate-pulse-glow bg-black">
+        <CircuitBoard className="absolute inset-0 opacity-80" />
+        <div className="absolute inset-0 bg-black/20 rounded-full"></div>
       </div>
       
       {/* Clickable button overlay */}
@@ -167,6 +167,7 @@ export default function FingerprintButton({ onClick, isLoading = false, classNam
         onClick={onClick}
         disabled={isLoading}
         className="relative z-10 w-full h-full bg-transparent border-0 rounded-full p-6 hover:scale-110 hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300"
+        style={{ background: 'none', backgroundImage: 'none' }}
       >
         {/* Complete fingerprint icon on top */}
         <CompleteFingerprint 
