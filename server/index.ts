@@ -3,9 +3,13 @@ import { registerRoutes } from "./routes.js";
 import { setupVite, serveStatic, log } from "./vite.js";
 
 const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Basic middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Request logging middleware
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
@@ -38,24 +42,21 @@ app.use((req, res, next) => {
 
 (async () => {
   try {
-    // Register API routes FIRST before any middleware
+    // Register API routes
     const server = await registerRoutes(app);
 
-    // importantly only setup vite in development and after
-    // setting up all the other routes so the catch-all route
-    // doesn't interfere with the other routes
-    if (app.get("env") === "development") {
+    // Setup development or production serving
+    if (process.env.NODE_ENV === "development") {
       await setupVite(app, server);
     } else {
       serveStatic(app);
     }
 
-    // Error handling middleware goes LAST
+    // Error handling middleware
     app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
       const status = err.status || err.statusCode || 500;
       const message = err.message || "Internal Server Error";
 
-      // Console log errors for debugging
       console.error('Server Error:', {
         status,
         message,
@@ -67,12 +68,12 @@ app.use((req, res, next) => {
       res.status(status).json({ message });
     });
 
-    // Use PORT from environment for deployment, fallback to 5000 for development
-    const port = process.env.PORT ? parseInt(process.env.PORT) : 5000;
-    server.listen(port, "0.0.0.0", () => {
-      console.log(`Server listening on 0.0.0.0:${port}`);
-      log(`serving on port ${port}`);
+    // Start server
+    server.listen(PORT, "0.0.0.0", () => {
+      console.log(`Server is running on port ${PORT}`);
+      console.log(`VeriFyz Protocol is running successfully!`);
     });
+
   } catch (error) {
     console.error('Failed to start server:', error);
     process.exit(1);
