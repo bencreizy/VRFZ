@@ -203,10 +203,10 @@ export default function FingerprintButton({ onClick, isLoading = false, classNam
         className="relative z-10 w-full h-full bg-transparent border-0 rounded-full p-2 hover:scale-110 hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 flex items-center justify-center"
         style={{ background: 'none', backgroundImage: 'none' }}
       >
-        {/* Fingerprint icon - fills the entire circle */}
+        {/* Fingerprint icon - 3x larger */}
         <Fingerprint 
           className={`text-cyan-400 ${isLoading ? 'animate-spin' : 'animate-fingerprint-scan'}`}
-          size={110}
+          size={220}
         />
       </Button>
     </div>
