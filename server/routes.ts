@@ -5,6 +5,11 @@ import { insertPresaleSubmissionSchema } from "@shared/schema";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Health check endpoint
+  app.get("/health", (req, res) => {
+    res.json({ status: "ok", timestamp: new Date().toISOString() });
+  });
+
   // Get dashboard data
   app.get("/api/dashboard", async (req, res) => {
     try {
