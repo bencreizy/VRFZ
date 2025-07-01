@@ -219,34 +219,34 @@ export default function Settings() {
                 <CardContent className="space-y-4">
                   <Button 
                     variant="outline" 
-                    className="w-full justify-start bg-gray-900 border-gray-700 hover:border-cyan-400 text-white"
+                    className="w-full justify-start bg-gray-900 border-gray-700 hover:border-cyan-400 text-white min-h-[64px] p-4"
                   >
-                    <Download className="mr-3 h-4 w-4 text-cyan-400" />
-                    <div className="text-left">
-                      <div className="font-medium">Export Data</div>
-                      <div className="text-sm text-gray-400">Download your verification history</div>
+                    <Download className="mr-3 h-4 w-4 text-cyan-400 flex-shrink-0" />
+                    <div className="text-left flex-1 overflow-hidden">
+                      <div className="font-medium truncate">Export Data</div>
+                      <div className="text-sm text-gray-400 truncate">Download your verification history</div>
                     </div>
                   </Button>
                   
                   <Button 
                     variant="outline" 
-                    className="w-full justify-start bg-gray-900 border-gray-700 hover:border-cyan-400 text-white"
+                    className="w-full justify-start bg-gray-900 border-gray-700 hover:border-cyan-400 text-white min-h-[64px] p-4"
                   >
-                    <RotateCcw className="mr-3 h-4 w-4 text-cyan-400" />
-                    <div className="text-left">
-                      <div className="font-medium">Reset Biometric Data</div>
-                      <div className="text-sm text-gray-400">Clear stored fingerprint templates</div>
+                    <RotateCcw className="mr-3 h-4 w-4 text-cyan-400 flex-shrink-0" />
+                    <div className="text-left flex-1 overflow-hidden">
+                      <div className="font-medium truncate">Reset Biometric Data</div>
+                      <div className="text-sm text-gray-400 truncate">Clear stored fingerprint templates</div>
                     </div>
                   </Button>
                   
                   <Button 
                     variant="outline" 
-                    className="w-full justify-start bg-red-900/20 border-red-700 hover:border-red-500 text-white"
+                    className="w-full justify-start bg-red-900/20 border-red-700 hover:border-red-500 text-white min-h-[64px] p-4"
                   >
-                    <Trash2 className="mr-3 h-4 w-4 text-red-400" />
-                    <div className="text-left">
-                      <div className="font-medium text-red-400">Delete Account</div>
-                      <div className="text-sm text-gray-400">Permanently remove your account</div>
+                    <Trash2 className="mr-3 h-4 w-4 text-red-400 flex-shrink-0" />
+                    <div className="text-left flex-1 overflow-hidden">
+                      <div className="font-medium text-red-400 truncate">Delete Account</div>
+                      <div className="text-sm text-gray-400 truncate">Permanently remove your account</div>
                     </div>
                   </Button>
                 </CardContent>

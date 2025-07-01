@@ -15,15 +15,15 @@ export default function BackgroundVideo({ className = "", showLogo = false }: Ba
           <defs>
             <pattern id="circuitGrid" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
               <rect width="50" height="50" fill="black"/>
-              <path d="M0 25 L50 25 M25 0 L25 50" stroke="#06b6d4" strokeWidth="1" opacity="0.6"/>
-              <circle cx="25" cy="25" r="2" fill="#06b6d4" opacity="0.8"/>
+              <path d="M0 25 L50 25 M25 0 L25 50" stroke="#06b6d4" strokeWidth="1" opacity="0.3"/>
+              <circle cx="25" cy="25" r="2" fill="#06b6d4" opacity="0.4"/>
             </pattern>
             
             <pattern id="circuitLines" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
               <rect width="100" height="100" fill="url(#circuitGrid)"/>
-              <path d="M0 50 L100 50 M50 0 L50 100" stroke="#06b6d4" strokeWidth="2" opacity="0.4"/>
-              <path d="M0 25 L50 25 L50 75 L100 75" stroke="#06b6d4" strokeWidth="1.5" opacity="0.5"/>
-              <path d="M25 0 L25 50 L75 50 L75 100" stroke="#06b6d4" strokeWidth="1.5" opacity="0.5"/>
+              <path d="M0 50 L100 50 M50 0 L50 100" stroke="#06b6d4" strokeWidth="2" opacity="0.2"/>
+              <path d="M0 25 L50 25 L50 75 L100 75" stroke="#06b6d4" strokeWidth="1.5" opacity="0.25"/>
+              <path d="M25 0 L25 50 L75 50 L75 100" stroke="#06b6d4" strokeWidth="1.5" opacity="0.25"/>
             </pattern>
           </defs>
           
