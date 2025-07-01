@@ -190,23 +190,23 @@ function CompleteFingerprint({ className = "", isLoading = false }: { className?
 export default function FingerprintButton({ onClick, isLoading = false, className = "" }: FingerprintButtonProps) {
   return (
     <div className="relative w-32 h-32 mx-auto">
-      {/* Circuit board background - this replaces any fingerprint background */}
+      {/* Circuit board background - this replaces the fingerprint background */}
       <div className="absolute inset-0 rounded-full border-2 border-cyan-400 overflow-hidden animate-pulse-glow bg-black">
-        <CircuitBoard className="absolute inset-0 opacity-80" />
-        <div className="absolute inset-0 bg-black/20 rounded-full"></div>
+        <CircuitBoard className="absolute inset-0 opacity-100" />
+        <div className="absolute inset-0 bg-black/10 rounded-full"></div>
       </div>
       
       {/* Clickable button overlay */}
       <Button
         onClick={onClick}
         disabled={isLoading}
-        className="relative z-10 w-full h-full bg-transparent border-0 rounded-full p-4 hover:scale-110 hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 flex items-center justify-center"
+        className="relative z-10 w-full h-full bg-transparent border-0 rounded-full p-2 hover:scale-110 hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 flex items-center justify-center"
         style={{ background: 'none', backgroundImage: 'none' }}
       >
-        {/* Fingerprint icon - much larger and more visible */}
+        {/* Fingerprint icon - fills the entire circle */}
         <Fingerprint 
           className={`text-cyan-400 ${isLoading ? 'animate-spin' : 'animate-fingerprint-scan'}`}
-          size={80}
+          size={110}
         />
       </Button>
     </div>
