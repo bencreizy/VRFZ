@@ -118,7 +118,8 @@ VeriFyz Protocol is a cutting-edge blockchain-based application that revolutioni
 ## Changelog
 
 Changelog:
-- June 29, 2025. Initial setup
+- July 1, 2025: Fixed critical deployment issues - API route registration order corrected, production build successful, all endpoints working properly
+- June 29, 2025: Initial setup
 
 ## User Preferences
 
