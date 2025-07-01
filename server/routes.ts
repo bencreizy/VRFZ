@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
-import { insertPresaleSubmissionSchema } from "@shared/schema";
+import { storage } from "./storage.js";
+import { insertPresaleSubmissionSchema } from "../shared/schema.js";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -20,6 +20,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const userId = 1; // Mock user ID - in real app this would come from auth
       
       const user = await storage.getUser(userId);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      
       const verifications = await storage.getVerificationsByUserId(userId);
       const recentActivity = verifications.slice(0, 10);
       
@@ -38,6 +42,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       });
     } catch (error) {
+      console.error('Dashboard error:', error);
       res.status(500).json({ message: "Failed to fetch dashboard data" });
     }
   });
@@ -60,6 +65,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (error instanceof z.ZodError) {
         res.status(400).json({ message: "Invalid submission data", errors: error.errors });
       } else {
+        console.error('Presale submission error:', error);
         res.status(500).json({ message: "Failed to submit presale" });
       }
     }
@@ -80,6 +86,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       });
     } catch (error) {
+      console.error('Presale fetch error:', error);
       res.status(500).json({ message: "Failed to fetch presale data" });
     }
   });
@@ -105,6 +112,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         res.json(settings);
       }
     } catch (error) {
+      console.error('Settings fetch error:', error);
       res.status(500).json({ message: "Failed to fetch settings" });
     }
   });
@@ -116,6 +124,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const settings = await storage.updateSettings(userId, req.body);
       res.json(settings);
     } catch (error) {
+      console.error('Settings update error:', error);
       res.status(500).json({ message: "Failed to update settings" });
     }
   });
@@ -136,6 +145,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         recentSubmissions: presaleSubmissions.slice(0, 10),
       });
     } catch (error) {
+      console.error('Admin stats error:', error);
       res.status(500).json({ message: "Failed to fetch admin stats" });
     }
   });
@@ -173,6 +183,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         reward: parseFloat(reward),
       });
     } catch (error) {
+      console.error('Verification error:', error);
       res.status(500).json({ message: "Verification failed" });
     }
   });

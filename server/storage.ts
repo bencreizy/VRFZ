@@ -11,7 +11,7 @@ import {
   type InsertVerification,
   type Settings,
   type InsertSettings
-} from "@shared/schema";
+} from "../shared/schema.js";
 
 export interface IStorage {
   // User methods

@@ -1,6 +1,6 @@
 import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
+import { registerRoutes } from "./routes.js";
+import { setupVite, serveStatic, log } from "./vite.js";
 
 const app = express();
 app.use(express.json());
@@ -82,10 +82,16 @@ app.use((req, res, next) => {
 // Handle uncaught exceptions and rejections
 process.on('uncaughtException', (error) => {
   console.error('Uncaught Exception:', error);
-  process.exit(1);
+  if (process.env.NODE_ENV === 'production') {
+    console.error('Server shutting down due to uncaught exception');
+    process.exit(1);
+  }
 });
 
 process.on('unhandledRejection', (reason, promise) => {
   console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-  process.exit(1);
+  if (process.env.NODE_ENV === 'production') {
+    console.error('Server shutting down due to unhandled rejection');
+    process.exit(1);
+  }
 });
