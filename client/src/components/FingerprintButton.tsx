@@ -130,7 +130,7 @@ export default function FingerprintButton({ onClick, isLoading = false, classNam
       >
         {/* Custom fingerprint icon with circuit patterns */}
         <CompleteFingerprint 
-          className={`w-20 h-20 text-cyan-400 ${isLoading ? 'animate-spin' : 'animate-fingerprint-scan'}`}
+          className={`w-28 h-28 text-cyan-400 ${isLoading ? 'animate-spin' : 'animate-fingerprint-scan'}`}
           isLoading={isLoading}
         />
       </Button>
