@@ -124,3 +124,7 @@ Changelog:
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+UI Design Preferences:
+- Use provided image assets directly instead of recreating with SVG/code
+- Button interactions should feel like real physical buttons (press/scale effects, not spinning)
+- Icons should be properly sized to fill their containers appropriately

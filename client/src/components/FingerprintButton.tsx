@@ -133,7 +133,7 @@ export default function FingerprintButton({ onClick, isLoading = false, classNam
         <img 
           src={fingerprintIcon}
           alt="Fingerprint Scanner"
-          className={`${isLoading ? 'animate-spin' : 'animate-fingerprint-scan'}`}
+          className={`${isLoading ? 'animate-pulse scale-95' : 'animate-fingerprint-scan'}`}
           style={{ width: '110px', height: '110px' }}
         />
       </Button>
