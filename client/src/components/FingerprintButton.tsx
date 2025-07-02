@@ -27,55 +27,58 @@ function CompleteFingerprint({ className = "", isLoading = false }: { className?
         </filter>
       </defs>
       
-      {/* Cyan fingerprint ridges - matching user's icon design */}
-      <g stroke="hsl(179, 100%, 50%)" fill="none" strokeWidth="1.8" filter="url(#fingerprint-glow)">
-        {/* Outer fingerprint curves */}
-        <path d="M 20 25 Q 30 10, 50 15 Q 70 20, 80 35 Q 85 50, 80 65 Q 70 80, 50 85 Q 30 90, 20 75 Q 15 50, 20 25" strokeWidth="1.5"/>
-        <path d="M 25 30 Q 32 18, 48 22 Q 64 26, 72 38 Q 78 50, 72 62 Q 64 74, 48 78 Q 32 82, 25 70 Q 20 50, 25 30" strokeWidth="1.5"/>
-        <path d="M 30 35 Q 36 25, 46 28 Q 56 31, 64 40 Q 70 50, 64 60 Q 56 69, 46 72 Q 36 75, 30 65 Q 25 50, 30 35" strokeWidth="1.5"/>
-        <path d="M 35 40 Q 40 32, 48 34 Q 56 36, 62 42 Q 66 50, 62 58 Q 56 64, 48 66 Q 40 68, 35 60 Q 32 50, 35 40" strokeWidth="1.5"/>
-        <path d="M 40 45 Q 44 39, 50 40 Q 56 41, 60 45 Q 62 50, 60 55 Q 56 59, 50 60 Q 44 61, 40 55 Q 38 50, 40 45" strokeWidth="1.5"/>
+      {/* Cyan fingerprint ridges - exact match to user's design */}
+      <g stroke="hsl(179, 100%, 50%)" fill="none" strokeWidth="1.6" filter="url(#fingerprint-glow)">
+        {/* Outer curved ridges following natural fingerprint pattern */}
+        <path d="M 10 15 C 15 8, 30 5, 45 8 C 60 11, 75 18, 82 30 C 88 42, 88 58, 82 70 C 75 82, 60 89, 45 92 C 30 95, 15 92, 10 85 C 5 78, 5 62, 10 50 C 5 38, 5 22, 10 15" strokeWidth="1.4"/>
         
-        {/* Inner fingerprint curves */}
-        <path d="M 42 47 Q 45 44, 50 45 Q 55 46, 58 49 Q 59 52, 58 55 Q 55 58, 50 59 Q 45 60, 42 57 Q 41 52, 42 47" strokeWidth="1.5"/>
-        <path d="M 44 49 Q 46 47, 50 48 Q 54 49, 56 51 Q 57 53, 56 55 Q 54 57, 50 58 Q 46 59, 44 57 Q 43 53, 44 49" strokeWidth="1.5"/>
+        <path d="M 15 18 C 20 12, 32 10, 45 12 C 58 14, 70 20, 76 30 C 82 40, 82 54, 76 64 C 70 74, 58 80, 45 82 C 32 84, 20 82, 15 76 C 10 70, 10 56, 15 46 C 10 36, 10 26, 15 18" strokeWidth="1.4"/>
         
-        {/* Additional curved ridges */}
-        <path d="M 15 20 Q 35 5, 60 12 Q 85 19, 90 45" strokeWidth="1.2"/>
-        <path d="M 10 50 Q 20 30, 40 35 Q 60 40, 85 60" strokeWidth="1.2"/>
-        <path d="M 20 85 Q 40 80, 60 83 Q 80 86, 90 75" strokeWidth="1.2"/>
-        <path d="M 12 35 Q 25 25, 45 30 Q 65 35, 88 55" strokeWidth="1"/>
-        <path d="M 18 75 Q 35 70, 55 73 Q 75 76, 85 68" strokeWidth="1"/>
+        <path d="M 20 22 C 24 17, 34 15, 45 17 C 56 19, 66 24, 71 32 C 76 40, 76 52, 71 60 C 66 68, 56 73, 45 75 C 34 77, 24 75, 20 70 C 16 65, 16 53, 20 45 C 16 37, 16 29, 20 22" strokeWidth="1.4"/>
+        
+        <path d="M 25 26 C 28 22, 36 20, 45 22 C 54 24, 61 28, 65 34 C 69 40, 69 50, 65 56 C 61 62, 54 66, 45 68 C 36 70, 28 68, 25 64 C 22 60, 22 52, 25 46 C 22 40, 22 32, 25 26" strokeWidth="1.4"/>
+        
+        <path d="M 30 30 C 32 27, 38 25, 45 27 C 52 29, 57 32, 60 36 C 63 40, 63 48, 60 52 C 57 56, 52 59, 45 61 C 38 63, 32 61, 30 58 C 28 55, 28 49, 30 45 C 28 41, 28 35, 30 30" strokeWidth="1.4"/>
+        
+        <path d="M 35 34 C 36 32, 40 30, 45 32 C 50 34, 53 36, 55 39 C 57 42, 57 46, 55 49 C 53 52, 50 54, 45 56 C 40 58, 36 56, 35 54 C 34 52, 34 48, 35 45 C 34 42, 34 38, 35 34" strokeWidth="1.4"/>
+        
+        <path d="M 38 37 C 39 36, 42 35, 45 36 C 48 37, 50 38, 51 40 C 52 42, 52 44, 51 46 C 50 48, 48 49, 45 50 C 42 51, 39 50, 38 49 C 37 48, 37 46, 38 44 C 37 42, 37 39, 38 37" strokeWidth="1.4"/>
+        
+        {/* Additional ridge details */}
+        <path d="M 8 50 C 12 35, 25 25, 40 28 C 55 31, 68 38, 75 50" strokeWidth="1.2"/>
+        <path d="M 75 50 C 68 62, 55 69, 40 72 C 25 75, 12 65, 8 50" strokeWidth="1.2"/>
+        <path d="M 12 25 C 20 15, 35 12, 50 15 C 65 18, 78 25, 85 35" strokeWidth="1"/>
+        <path d="M 85 65 C 78 75, 65 82, 50 85 C 35 88, 20 85, 12 75" strokeWidth="1"/>
       </g>
       
-      {/* Orange circuit patterns - positioned on right side */}
-      <g stroke="hsl(20, 100%, 55%)" fill="hsl(20, 100%, 55%)" strokeWidth="2.5" filter="url(#fingerprint-glow)">
-        {/* Circuit nodes */}
-        <circle cx="70" cy="35" r="3.5" strokeWidth="1.5"/>
-        <circle cx="78" cy="48" r="3" strokeWidth="1.5"/>
-        <circle cx="72" cy="62" r="2.5" strokeWidth="1.5"/>
-        <circle cx="65" cy="72" r="3" strokeWidth="1.5"/>
+      {/* Orange circuit patterns - positioned exactly like user's design */}
+      <g stroke="hsl(20, 100%, 55%)" fill="hsl(20, 100%, 55%)" strokeWidth="2.2" filter="url(#fingerprint-glow)">
+        {/* Main circuit nodes with holes */}
+        <circle cx="68" cy="40" r="4" fill="none" strokeWidth="2.5"/>
+        <circle cx="68" cy="40" r="1.8" fill="hsl(20, 100%, 55%)"/>
         
-        {/* Main circuit path */}
-        <path d="M 70 35 L 78 48 L 72 62 L 65 72" stroke="hsl(20, 100%, 55%)" strokeWidth="2.5" fill="none"/>
+        <circle cx="72" cy="55" r="3.5" fill="none" strokeWidth="2.2"/>
+        <circle cx="72" cy="55" r="1.5" fill="hsl(20, 100%, 55%)"/>
         
-        {/* Branch circuits */}
-        <path d="M 78 48 L 85 52 L 88 58" stroke="hsl(20, 100%, 55%)" strokeWidth="2" fill="none"/>
-        <path d="M 72 62 L 80 67 L 84 73" stroke="hsl(20, 100%, 55%)" strokeWidth="2" fill="none"/>
-        <path d="M 65 72 L 60 78 L 55 82" stroke="hsl(20, 100%, 55%)" strokeWidth="2" fill="none"/>
+        <circle cx="65" cy="68" r="3.8" fill="none" strokeWidth="2.4"/>
+        <circle cx="65" cy="68" r="1.6" fill="hsl(20, 100%, 55%)"/>
         
-        {/* Circuit connection details */}
-        <rect x="68" y="33" width="4" height="4" rx="1" strokeWidth="1"/>
-        <rect x="76" y="46" width="4" height="4" rx="1" strokeWidth="1"/>
-        <rect x="70" y="60" width="4" height="4" rx="1" strokeWidth="1"/>
-        <rect x="63" y="70" width="4" height="4" rx="1" strokeWidth="1"/>
+        {/* Main circuit connecting lines */}
+        <path d="M 68 44 L 70 50 L 72 51" stroke="hsl(20, 100%, 55%)" strokeWidth="2.5" fill="none"/>
+        <path d="M 72 59 L 69 63 L 65 64" stroke="hsl(20, 100%, 55%)" strokeWidth="2.5" fill="none"/>
         
-        {/* Small connection dots */}
-        <circle cx="83" cy="54" r="1.5"/>
-        <circle cx="77" cy="69" r="1.5"/>
-        <circle cx="62" cy="76" r="1.5"/>
-        <circle cx="87" cy="60" r="1"/>
-        <circle cx="81" cy="75" r="1"/>
+        {/* Branch circuit paths */}
+        <path d="M 72 40 L 78 42 L 82 46" stroke="hsl(20, 100%, 55%)" strokeWidth="2" fill="none"/>
+        <path d="M 76 55 L 80 58 L 84 62" stroke="hsl(20, 100%, 55%)" strokeWidth="2" fill="none"/>
+        <path d="M 61 68 L 58 72 L 54 75" stroke="hsl(20, 100%, 55%)" strokeWidth="2" fill="none"/>
+        
+        {/* Small connection elements */}
+        <circle cx="78" cy="42" r="1.2"/>
+        <circle cx="80" cy="58" r="1"/>
+        <circle cx="58" cy="72" r="1.2"/>
+        <circle cx="82" cy="46" r="0.8"/>
+        <circle cx="84" cy="62" r="0.8"/>
+        <circle cx="54" cy="75" r="0.8"/>
       </g>
       
       {/* Scanning animation lines when loading */}
