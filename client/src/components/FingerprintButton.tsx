@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Fingerprint } from "lucide-react";
 import CircuitBoard from "./CircuitBoard";
+import fingerprintIcon from "@assets/Logopit_1751457066112_1751457428143.png";
 
 interface FingerprintButtonProps {
   onClick: () => void;
@@ -128,11 +129,12 @@ export default function FingerprintButton({ onClick, isLoading = false, classNam
         className="fingerprint-button relative z-10 w-full h-full bg-transparent border-0 rounded-full p-2 transition-all duration-300 flex items-center justify-center"
         style={{ background: 'none', backgroundImage: 'none' }}
       >
-        {/* Custom fingerprint icon with circuit patterns */}
-        <CompleteFingerprint 
-          className={`w-30 h-30 text-cyan-400 ${isLoading ? 'animate-spin' : 'animate-fingerprint-scan'}`}
-          style={{ width: '120px', height: '120px' }}
-          isLoading={isLoading}
+        {/* Custom fingerprint icon - using your actual image */}
+        <img 
+          src={fingerprintIcon}
+          alt="Fingerprint Scanner"
+          className={`${isLoading ? 'animate-spin' : 'animate-fingerprint-scan'}`}
+          style={{ width: '110px', height: '110px' }}
         />
       </Button>
     </div>
