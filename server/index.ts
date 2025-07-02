@@ -45,6 +45,16 @@ app.use((req, res, next) => {
     // Register API routes
     const server = await registerRoutes(app);
 
+    // Validate that a proper server object was returned
+    if (!server || typeof server.listen !== "function") {
+      throw new Error("registerRoutes() did not return a valid server object");
+    }
+
+    // Fallback route for homepage testing
+    app.get("/", (_req, res) => {
+      res.send("VeriFyz Protocol is live and routing works!");
+    });
+
     // Setup development or production serving
     if (process.env.NODE_ENV === "development") {
       await setupVite(app, server);
@@ -69,13 +79,17 @@ app.use((req, res, next) => {
     });
 
     // Start server
-    server.listen(PORT, "0.0.0.0", () => {
-      console.log(`Server is running on port ${PORT}`);
+    const port = parseInt(PORT.toString(), 10);
+    server.listen(port, "0.0.0.0", () => {
+      console.log(`Server is running on port ${port}`);
       console.log(`VeriFyz Protocol is running successfully!`);
     });
 
-  } catch (error) {
-    console.error('Failed to start server:', error);
+  } catch (error: any) {
+    console.error('Failed to start server:', error?.message || error);
+    if (error?.stack) {
+      console.error(error.stack);
+    }
     process.exit(1);
   }
 })();
