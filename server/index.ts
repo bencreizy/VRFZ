@@ -50,10 +50,7 @@ app.use((req, res, next) => {
       throw new Error("registerRoutes() did not return a valid server object");
     }
 
-    // Fallback route for homepage testing
-    app.get("/", (_req, res) => {
-      res.send("VeriFyz Protocol is live and routing works!");
-    });
+
 
     // Setup development or production serving
     if (process.env.NODE_ENV === "development") {
