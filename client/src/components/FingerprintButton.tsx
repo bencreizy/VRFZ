@@ -124,9 +124,13 @@ export default function FingerprintButton({ onClick, isLoading = false, classNam
       
       {/* Clickable button overlay */}
       <Button
-        onClick={onClick}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          onClick();
+        }}
         disabled={isLoading}
-        className="fingerprint-button relative z-10 w-full h-full bg-transparent border-0 rounded-full p-2 transition-all duration-300 flex items-center justify-center"
+        className="fingerprint-button relative z-10 w-full h-full bg-transparent border-0 rounded-full p-2 transition-all duration-300 flex items-center justify-center cursor-pointer"
         style={{ background: 'none', backgroundImage: 'none' }}
       >
         {/* Custom fingerprint icon - using your actual image */}

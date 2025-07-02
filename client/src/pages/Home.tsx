@@ -21,6 +21,7 @@ export default function Home() {
       toast({
         title: "Verification Successful!",
         description: `You earned ${data.reward} VFZ tokens`,
+        duration: 3000,
       });
       queryClient.invalidateQueries({ queryKey: ["/api/dashboard"] });
     },
@@ -29,6 +30,7 @@ export default function Home() {
         title: "Verification Failed",
         description: "Please try again",
         variant: "destructive",
+        duration: 3000,
       });
     },
   });
