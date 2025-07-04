@@ -24,6 +24,19 @@
   --ring: hsl(179, 100%, 50%);
   --radius: 0.5rem;
   --cyber-cyan: hsl(179, 100%, 50%);
+  --sidebar-background: hsl(0, 0%, 10%);
+  --sidebar-foreground: hsl(0, 0%, 98%);
+  --sidebar-primary: hsl(179, 100%, 50%);
+  --sidebar-primary-foreground: hsl(0, 0%, 0%);
+  --sidebar-accent: hsl(0, 0%, 15%);
+  --sidebar-accent-foreground: hsl(0, 0%, 98%);
+  --sidebar-border: hsl(0, 0%, 20%);
+  --sidebar-ring: hsl(179, 100%, 50%);
+  --chart-1: hsl(179, 100%, 50%);
+  --chart-2: hsl(210, 100%, 50%);
+  --chart-3: hsl(270, 100%, 50%);
+  --chart-4: hsl(300, 100%, 50%);
+  --chart-5: hsl(330, 100%, 50%);
 }
 
 .dark {
@@ -47,11 +60,24 @@
   --destructive-foreground: hsl(60, 9.1%, 97.8%);
   --ring: hsl(179, 100%, 50%);
   --radius: 0.5rem;
+  --sidebar-background: hsl(0, 0%, 10%);
+  --sidebar-foreground: hsl(0, 0%, 98%);
+  --sidebar-primary: hsl(179, 100%, 50%);
+  --sidebar-primary-foreground: hsl(0, 0%, 0%);
+  --sidebar-accent: hsl(0, 0%, 15%);
+  --sidebar-accent-foreground: hsl(0, 0%, 98%);
+  --sidebar-border: hsl(0, 0%, 20%);
+  --sidebar-ring: hsl(179, 100%, 50%);
+  --chart-1: hsl(179, 100%, 50%);
+  --chart-2: hsl(210, 100%, 50%);
+  --chart-3: hsl(270, 100%, 50%);
+  --chart-4: hsl(300, 100%, 50%);
+  --chart-5: hsl(330, 100%, 50%);
 }
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: var(--border);
   }
 
   body {
