@@ -44,13 +44,17 @@ export default function Home() {
   useEffect(() => {
     // Check if user has visited before
     const hasVisited = localStorage.getItem('verifyz-visited');
+    console.log('Has visited before:', hasVisited);
     
     if (hasVisited) {
       // User has visited before - skip landing and show main page
+      console.log('Skipping landing page');
       setShowLanding(false);
     } else {
       // First-time visitor - show arrow and text after 1 second
+      console.log('First time visitor - showing landing page');
       const timer = setTimeout(() => {
+        console.log('Showing arrow and text');
         setShowArrowAndText(true);
       }, 1000);
       
@@ -59,18 +63,24 @@ export default function Home() {
   }, []);
 
   const handleFingerprintScan = () => {
+    console.log('Fingerprint clicked, showLanding:', showLanding);
     if (showLanding) {
+      console.log('Processing landing page click');
       // Mark as visited
       localStorage.setItem('verifyz-visited', 'true');
+      console.log('Set visited flag');
       
       // Start fade out animation
       setFadeOut(true);
+      console.log('Started fade out');
       
       // Wait for fade out to complete, then navigate to dashboard
       setTimeout(() => {
+        console.log('Navigating to dashboard');
         setLocation('/dashboard');
       }, 600); // Slightly longer to ensure fade completes
     } else {
+      console.log('Normal verification mode');
       // Normal verification
       verifyMutation.mutate();
     }
