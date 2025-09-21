@@ -69,7 +69,7 @@ export default function Home() {
       // Wait for fade out to complete, then navigate to dashboard
       setTimeout(() => {
         setLocation('/dashboard');
-      }, 500);
+      }, 600); // Slightly longer to ensure fade completes
     } else {
       // Normal verification
       verifyMutation.mutate();
@@ -79,8 +79,8 @@ export default function Home() {
   if (showLanding) {
     return (
       <div 
-        className={`fixed inset-0 bg-black flex flex-col items-center justify-center transition-opacity duration-500 ${
-          fadeOut ? 'opacity-0' : 'opacity-100'
+        className={`fixed inset-0 bg-black flex flex-col items-center justify-center transition-all duration-700 ease-in-out ${
+          fadeOut ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
         }`}
         style={{ zIndex: 9999 }}
       >
