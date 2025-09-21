@@ -84,10 +84,15 @@
     @apply font-sans antialiased text-foreground;
     font-family: 'Inter', sans-serif;
     background: transparent !important;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
   
   #root {
     background: transparent !important;
+    min-height: 100vh;
+    position: relative;
   }
 }
 
@@ -204,6 +209,10 @@
 }
 
 @keyframes zoom-animation {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%, 100% { 
+    transform: scale(1); 
+  }
+  50% { 
+    transform: scale(1.08); 
+  }
 }
