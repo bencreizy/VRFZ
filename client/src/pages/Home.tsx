@@ -43,7 +43,7 @@ export default function Home() {
     <div className="relative">
       {/* Home Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        <BackgroundVideo showLogo={true} />
+        <BackgroundVideo showLogo={false} />
         
         {/* Content */}
         <div className="relative z-10 text-center animate-slide-up px-6 max-w-4xl mx-auto">

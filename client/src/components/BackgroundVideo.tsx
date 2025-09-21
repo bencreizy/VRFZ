@@ -9,7 +9,7 @@ interface BackgroundVideoProps {
 const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ showLogo = false, className = "" }) => {
   return (
     <div className={`fixed inset-0 z-[-1] ${className}`} style={{ width: '100vw', height: '100vh' }}>
-      {/* Circuit board background */}
+      {/* Circuit board background - only this image */}
       <img 
         src="/attached_assets/file_000000001a7c6243b5d6a0a353ce6708_1758424894098.png"
         alt=""
@@ -21,17 +21,6 @@ const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ showLogo = false, cla
 
       {/* Subtle overlay for content readability */}
       <div className="absolute inset-0 bg-black/15" />
-
-      {/* Logo - only show when explicitly requested */}
-      {showLogo && (
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-          <div className="text-6xl md:text-8xl font-bold text-center">
-            <div className="bg-gradient-to-r from-cyan-400 via-white to-cyan-400 bg-clip-text text-transparent">
-              VFZ
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
