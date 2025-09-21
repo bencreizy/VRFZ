@@ -9,21 +9,20 @@ interface BackgroundVideoProps {
 const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ showLogo = false, className = "" }) => {
   return (
     <div className={`fixed inset-0 z-[-1] ${className}`}>
-      {/* Background Image with Animation */}
+      {/* Background with fallback gradient */}
       <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 w-full h-full"
         style={{
-          backgroundImage: `url('/attached_assets/file_000000001a7c6243b5d6a0a353ce6708_1758424546605.png')`,
-          animation: 'zoom-animation 10s ease-in-out infinite',
-          minHeight: '100vh',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: 1
+          background: `
+            url('/attached_assets/file_000000001a7c6243b5d6a0a353ce6708_1758424546605.png') center/cover no-repeat,
+            linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)
+          `,
+          animation: 'zoom-animation 10s ease-in-out infinite'
         }}
       />
 
-      {/* Overlay gradient - very light to show the background clearly */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/5 via-transparent to-black/5" />
+      {/* Very subtle overlay */}
+      <div className="absolute inset-0 bg-black/10" />
 
       {/* Logo */}
       {showLogo && (

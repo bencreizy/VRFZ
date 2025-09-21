@@ -85,6 +85,10 @@
     font-family: 'Inter', sans-serif;
     background: transparent !important;
   }
+  
+  #root {
+    background: transparent !important;
+  }
 }
 
 @layer components {
