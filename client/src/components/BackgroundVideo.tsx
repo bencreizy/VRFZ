@@ -17,6 +17,8 @@ const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ showLogo = false, cla
         style={{
           animation: 'zoom-animation 8s ease-in-out infinite'
         }}
+        onLoad={() => console.log('Circuit board image loaded successfully')}
+        onError={(e) => console.error('Failed to load circuit board image:', e)}
       />
 
       {/* Subtle overlay for content readability */}
