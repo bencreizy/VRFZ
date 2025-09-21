@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Fingerprint } from "lucide-react";
 import CircuitBoard from "./CircuitBoard";
-import fingerprintIcon from "@assets/Logopit_1751457066112_1751457428143.png";
+import fingerprintIcon from "@assets/new-fingerprint-icon.png";
 
 interface FingerprintButtonProps {
   onClick: () => void;
