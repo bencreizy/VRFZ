@@ -195,6 +195,10 @@
     animation: bounce-gentle 2s ease-in-out infinite;
   }
   
+  .duration-800 {
+    transition-duration: 800ms;
+  }
+  
   /* Enhanced toast swipe responsiveness */
   .toast-swipeable {
     touch-action: pan-y;

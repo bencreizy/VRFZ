@@ -1,4 +1,3 @@
-
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
@@ -45,7 +44,7 @@ export default function Home() {
     // Check if user has visited before
     const hasVisited = localStorage.getItem('verifyz-visited');
     console.log('Has visited before:', hasVisited);
-    
+
     if (hasVisited) {
       // User has visited before - skip landing and show main page
       console.log('Skipping landing page');
@@ -57,7 +56,7 @@ export default function Home() {
         console.log('Showing arrow and text');
         setShowArrowAndText(true);
       }, 1000);
-      
+
       return () => clearTimeout(timer);
     }
   }, []);
@@ -69,16 +68,16 @@ export default function Home() {
       // Mark as visited
       localStorage.setItem('verifyz-visited', 'true');
       console.log('Set visited flag');
-      
+
       // Start fade out animation
       setFadeOut(true);
       console.log('Started fade out');
-      
+
       // Wait for fade out to complete, then navigate to dashboard
       setTimeout(() => {
         console.log('Navigating to dashboard');
         setLocation('/dashboard');
-      }, 600); // Slightly longer to ensure fade completes
+      }, 800); // Match the fade-out duration
     } else {
       console.log('Normal verification mode');
       // Normal verification
@@ -89,8 +88,8 @@ export default function Home() {
   if (showLanding) {
     return (
       <div 
-        className={`fixed inset-0 bg-black flex flex-col items-center justify-center transition-all duration-700 ease-in-out ${
-          fadeOut ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+        className={`fixed inset-0 bg-black flex flex-col items-center justify-center transition-opacity duration-800 ease-linear ${
+          fadeOut ? 'opacity-0' : 'opacity-100'
         }`}
         style={{ zIndex: 9999 }}
       >
@@ -101,7 +100,7 @@ export default function Home() {
             isLoading={verifyMutation.isPending}
           />
         </div>
-        
+
         {/* Arrow and Text - fade in after 1 second */}
         <div 
           className={`flex flex-col items-center transition-opacity duration-700 ${
@@ -112,7 +111,7 @@ export default function Home() {
           <ChevronUp 
             className="text-cyan-400 w-8 h-8 mb-4 animate-bounce-gentle" 
           />
-          
+
           {/* Touch to Verifyz Text */}
           <p className="text-cyan-400 text-xl font-medium tracking-wide">
             Touch to Verifyz
@@ -127,7 +126,7 @@ export default function Home() {
     <div className="relative">
       {/* Home Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        
+
         {/* Content */}
         <div className="relative z-10 text-center animate-slide-up px-6 max-w-4xl mx-auto">
           <div className="mb-12">
@@ -138,7 +137,7 @@ export default function Home() {
               Proof of Presence — Privacy First
             </p>
           </div>
-          
+
           {/* Fingerprint Button */}
           <div className="mb-16">
             <FingerprintButton 
@@ -147,7 +146,7 @@ export default function Home() {
             />
             <p className="mt-6 text-cyan-400 font-medium text-lg">Touch to Verify Presence</p>
           </div>
-          
+
           {/* Quick Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="text-center">

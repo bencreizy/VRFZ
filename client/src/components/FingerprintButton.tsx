@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Fingerprint } from "lucide-react";
 import CircuitBoard from "./CircuitBoard";
@@ -114,24 +115,40 @@ function CompleteFingerprint({ className = "", isLoading = false }: { className?
 }
 
 export default function FingerprintButton({ onClick, isLoading = false, className = "" }: FingerprintButtonProps) {
+  const [isPressed, setIsPressed] = useState(false);
+
+  const handlePressStart = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsPressed(true);
+  };
+
+  const handlePressEnd = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsPressed(false);
+    onClick();
+  };
+
   return (
     <div className="relative w-32 h-32 mx-auto">
       {/* Clickable button - no background styling for landing page */}
       <Button
-        onClick={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          onClick();
-        }}
         disabled={isLoading}
-        className="fingerprint-button relative z-10 w-full h-full bg-transparent border-0 rounded-full p-2 transition-all duration-300 flex items-center justify-center cursor-pointer"
+        className="fingerprint-button relative z-10 w-full h-full bg-transparent border-0 rounded-full p-2 flex items-center justify-center cursor-pointer"
         style={{ background: 'none', backgroundImage: 'none' }}
+        onMouseDown={handlePressStart}
+        onMouseUp={handlePressEnd}
+        onTouchStart={handlePressStart}
+        onTouchEnd={handlePressEnd}
       >
         {/* Custom fingerprint icon - using your actual image */}
         <img 
           src={fingerprintIcon}
           alt="Fingerprint Scanner"
-          className={`${isLoading ? 'animate-pulse scale-95' : 'animate-fingerprint-scan'}`}
+          className={`transition-transform duration-150 ${
+            isPressed ? 'scale-90' : 'scale-100'
+          } ${isLoading ? 'animate-pulse' : 'animate-fingerprint-scan'}`}
           style={{ width: '110px', height: '110px' }}
         />
       </Button>
