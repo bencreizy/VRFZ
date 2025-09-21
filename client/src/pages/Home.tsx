@@ -4,7 +4,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import FingerprintButton from "@/components/FingerprintButton";
 import { useState, useEffect } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronUp } from "lucide-react";
 
 export default function Home() {
   const { toast } = useToast();
@@ -64,10 +64,9 @@ export default function Home() {
       // Start fade out animation
       setFadeOut(true);
       
-      // Wait for fade out to complete, then show main page
+      // Wait for fade out to complete, then navigate to dashboard
       setTimeout(() => {
-        setShowLanding(false);
-        verifyMutation.mutate();
+        window.location.href = '/dashboard';
       }, 500);
     } else {
       // Normal verification
@@ -83,14 +82,12 @@ export default function Home() {
         }`}
         style={{ zIndex: 9999 }}
       >
-        {/* Fingerprint Button with pulsing glow */}
+        {/* Fingerprint Button without styling */}
         <div className="relative mb-8">
-          <div className="animate-pulse-heartbeat">
-            <FingerprintButton 
-              onClick={handleFingerprintScan} 
-              isLoading={verifyMutation.isPending}
-            />
-          </div>
+          <FingerprintButton 
+            onClick={handleFingerprintScan} 
+            isLoading={verifyMutation.isPending}
+          />
         </div>
         
         {/* Arrow and Text - fade in after 1 second */}
@@ -100,7 +97,7 @@ export default function Home() {
           }`}
         >
           {/* Bouncing Arrow */}
-          <ChevronDown 
+          <ChevronUp 
             className="text-cyan-400 w-8 h-8 mb-4 animate-bounce-gentle" 
           />
           

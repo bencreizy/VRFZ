@@ -116,13 +116,7 @@ function CompleteFingerprint({ className = "", isLoading = false }: { className?
 export default function FingerprintButton({ onClick, isLoading = false, className = "" }: FingerprintButtonProps) {
   return (
     <div className="relative w-32 h-32 mx-auto">
-      {/* Circuit board background - this replaces the fingerprint background */}
-      <div className="absolute inset-0 rounded-full border-2 border-cyan-400 overflow-hidden animate-pulse-glow bg-black">
-        <CircuitBoard className="absolute inset-0 opacity-100" />
-        <div className="absolute inset-0 bg-black/10 rounded-full"></div>
-      </div>
-      
-      {/* Clickable button overlay */}
+      {/* Clickable button - no background styling for landing page */}
       <Button
         onClick={(e) => {
           e.preventDefault();
