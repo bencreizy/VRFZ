@@ -5,10 +5,12 @@ import { useToast } from "@/hooks/use-toast";
 import FingerprintButton from "@/components/FingerprintButton";
 import { useState, useEffect } from "react";
 import { ChevronUp } from "lucide-react";
+import { useLocation } from "wouter";
 
 export default function Home() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const [location, setLocation] = useLocation();
   const [showLanding, setShowLanding] = useState(true);
   const [showArrowAndText, setShowArrowAndText] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
@@ -66,7 +68,7 @@ export default function Home() {
       
       // Wait for fade out to complete, then navigate to dashboard
       setTimeout(() => {
-        window.location.href = '/dashboard';
+        setLocation('/dashboard');
       }, 500);
     } else {
       // Normal verification
