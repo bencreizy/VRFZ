@@ -41,15 +41,35 @@ const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ showLogo = false, cla
         onError={(e) => {
           const img = e.target as HTMLImageElement;
           console.error('❌ FAILED: Circuit board image failed to load');
+          console.error('🔍 Complete error object:', e);
+          console.error('🔍 Error type:', e.type);
+          console.error('🔍 Error target:', e.target);
+          
+          // Log all possible paths to test
+          const possiblePaths = [
+            '/attached_assets/file_000000001a7c6243b5d6a0a353ce6708_1758424894098.png',
+            './attached_assets/file_000000001a7c6243b5d6a0a353ce6708_1758424894098.png',
+            '../attached_assets/file_000000001a7c6243b5d6a0a353ce6708_1758424894098.png',
+            '../../attached_assets/file_000000001a7c6243b5d6a0a353ce6708_1758424894098.png',
+            '/file_000000001a7c6243b5d6a0a353ce6708_1758424894098.png',
+            '@assets/file_000000001a7c6243b5d6a0a353ce6708_1758424894098.png'
+          ];
+          
           console.log('🔍 Debug info:', {
             attemptedSrc: img.src,
             currentURL: window.location.href,
-            basePath: window.location.origin
+            basePath: window.location.origin,
+            possiblePaths: possiblePaths
           });
           
-          // Try the @assets alias path
-          console.log('🔄 Trying @assets alias path...');
-          img.src = '@assets/file_000000001a7c6243b5d6a0a353ce6708_1758424894098.png';
+          // Test if this is the first failure
+          if (!img.src.includes('@assets')) {
+            console.log('🔄 Trying @assets alias path...');
+            img.src = '@assets/file_000000001a7c6243b5d6a0a353ce6708_1758424894098.png';
+          } else {
+            console.error('💥 BOTH PATHS FAILED - Final fallback to external image');
+            img.src = 'https://upload.wikimedia.org/wikipedia/commons/9/96/Electronic_Frontier_Foundation_video_conferencing_background_circuit-1_%2828343179979%29.png';
+          }
         }}
       />
 
