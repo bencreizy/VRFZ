@@ -41,45 +41,34 @@ export default function Home() {
   });
 
   useEffect(() => {
-    // Check if user has visited before
-    const hasVisited = localStorage.getItem('verifyz-visited');
-    console.log('Has visited before:', hasVisited);
+    // Landing page always shows first
+    // Check if user has seen the arrow/text before
+    const hasSeenArrowText = localStorage.getItem('verifyz-arrow-seen');
 
-    if (hasVisited) {
-      // User has visited before - skip landing and show main page
-      console.log('Skipping landing page');
-      setShowLanding(false);
-    } else {
+    if (!hasSeenArrowText) {
       // First-time visitor - show arrow and text after 1 second
-      console.log('First time visitor - showing landing page');
       const timer = setTimeout(() => {
-        console.log('Showing arrow and text');
         setShowArrowAndText(true);
       }, 1000);
 
       return () => clearTimeout(timer);
     }
+    // If user has seen arrow/text before, don't show them (showArrowAndText stays false)
   }, []);
 
   const handleFingerprintScan = () => {
-    console.log('Fingerprint clicked, showLanding:', showLanding);
     if (showLanding) {
-      console.log('Processing landing page click');
-      // Mark as visited
-      localStorage.setItem('verifyz-visited', 'true');
-      console.log('Set visited flag');
+      // Mark that user has seen the arrow/text (so it won't show on future visits)
+      localStorage.setItem('verifyz-arrow-seen', 'true');
 
       // Start fade out animation
       setFadeOut(true);
-      console.log('Started fade out');
 
       // Wait for fade out to complete, then navigate to dashboard
       setTimeout(() => {
-        console.log('Navigating to dashboard');
         setLocation('/dashboard');
       }, 800); // Match the fade-out duration
     } else {
-      console.log('Normal verification mode');
       // Normal verification
       verifyMutation.mutate();
     }
