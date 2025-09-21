@@ -187,6 +187,14 @@
     animation: slide-up 0.5s ease-out;
   }
   
+  .animate-pulse-heartbeat {
+    animation: pulse-heartbeat 2s ease-in-out infinite;
+  }
+  
+  .animate-bounce-gentle {
+    animation: bounce-gentle 2s ease-in-out infinite;
+  }
+  
   /* Enhanced toast swipe responsiveness */
   .toast-swipeable {
     touch-action: pan-y;
@@ -222,5 +230,25 @@
   50% { 
     transform: scale(1.05);
     opacity: 0.95;
+  }
+}
+
+@keyframes pulse-heartbeat {
+  0%, 100% { 
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 35px rgba(0, 255, 204, 0.8);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { 
+    transform: translateY(0);
+  }
+  50% { 
+    transform: translateY(-8px);
   }
 }

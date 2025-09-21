@@ -1,13 +1,17 @@
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import BackgroundVideo from "@/components/BackgroundVideo";
 import FingerprintButton from "@/components/FingerprintButton";
-import { Fingerprint, Users, TrendingUp, DollarSign } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ChevronDown } from "lucide-react";
 
 export default function Home() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const [showLanding, setShowLanding] = useState(true);
+  const [showArrowAndText, setShowArrowAndText] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
 
   const verifyMutation = useMutation({
     mutationFn: async () => {
@@ -35,15 +39,85 @@ export default function Home() {
     },
   });
 
+  useEffect(() => {
+    // Check if user has visited before
+    const hasVisited = localStorage.getItem('verifyz-visited');
+    
+    if (hasVisited) {
+      // User has visited before - skip landing and show main page
+      setShowLanding(false);
+    } else {
+      // First-time visitor - show arrow and text after 1 second
+      const timer = setTimeout(() => {
+        setShowArrowAndText(true);
+      }, 1000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   const handleFingerprintScan = () => {
-    verifyMutation.mutate();
+    if (showLanding) {
+      // Mark as visited
+      localStorage.setItem('verifyz-visited', 'true');
+      
+      // Start fade out animation
+      setFadeOut(true);
+      
+      // Wait for fade out to complete, then show main page
+      setTimeout(() => {
+        setShowLanding(false);
+        verifyMutation.mutate();
+      }, 500);
+    } else {
+      // Normal verification
+      verifyMutation.mutate();
+    }
   };
 
+  if (showLanding) {
+    return (
+      <div 
+        className={`fixed inset-0 bg-black flex flex-col items-center justify-center transition-opacity duration-500 ${
+          fadeOut ? 'opacity-0' : 'opacity-100'
+        }`}
+        style={{ zIndex: 9999 }}
+      >
+        {/* Fingerprint Button with pulsing glow */}
+        <div className="relative mb-8">
+          <div className="animate-pulse-heartbeat">
+            <FingerprintButton 
+              onClick={handleFingerprintScan} 
+              isLoading={verifyMutation.isPending}
+            />
+          </div>
+        </div>
+        
+        {/* Arrow and Text - fade in after 1 second */}
+        <div 
+          className={`flex flex-col items-center transition-opacity duration-700 ${
+            showArrowAndText ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          {/* Bouncing Arrow */}
+          <ChevronDown 
+            className="text-cyan-400 w-8 h-8 mb-4 animate-bounce-gentle" 
+          />
+          
+          {/* Touch to Verifyz Text */}
+          <p className="text-cyan-400 text-xl font-medium tracking-wide">
+            Touch to Verifyz
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // Main homepage content (original content)
   return (
     <div className="relative">
       {/* Home Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        <BackgroundVideo showLogo={false} />
         
         {/* Content */}
         <div className="relative z-10 text-center animate-slide-up px-6 max-w-4xl mx-auto">
@@ -81,7 +155,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
       </section>
     </div>
   );
