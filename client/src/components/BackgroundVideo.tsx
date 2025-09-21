@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 interface BackgroundVideoProps {
@@ -10,15 +11,15 @@ export default function BackgroundVideo({ showLogo = false, className = "" }: Ba
     <div className={`fixed inset-0 z-[-1] ${className}`}>
       {/* Background Image with Animation */}
       <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-100"
         style={{
           backgroundImage: `url('/attached_assets/file_000000001a7c6243b5d6a0a353ce6708_1758424546605.png')`,
           animation: 'zoom-animation 10s ease-in-out infinite'
         }}
       />
 
-      {/* Overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-black/50" />
+      {/* Overlay gradient - reduced opacity to show more of the background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/20 to-black/30" />
 
       {/* Logo */}
       {showLogo && (
