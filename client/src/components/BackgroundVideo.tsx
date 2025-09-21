@@ -22,7 +22,7 @@ const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ showLogo = false, cla
       />
 
       {/* Subtle overlay for content readability */}
-      <div className="absolute inset-0 bg-black/15" />
+      <div className="absolute inset-0 bg-black/20" />
     </div>
   );
 };
