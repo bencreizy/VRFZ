@@ -11,15 +11,17 @@ export default function BackgroundVideo({ showLogo = false, className = "" }: Ba
     <div className={`fixed inset-0 z-[-1] ${className}`}>
       {/* Background Image with Animation */}
       <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-100"
+        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url('/attached_assets/file_000000001a7c6243b5d6a0a353ce6708_1758424546605.png')`,
-          animation: 'zoom-animation 10s ease-in-out infinite'
+          animation: 'zoom-animation 10s ease-in-out infinite',
+          minHeight: '100vh',
+          backgroundAttachment: 'fixed'
         }}
       />
 
-      {/* Overlay gradient - reduced opacity to show more of the background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/20 to-black/30" />
+      {/* Overlay gradient - very light to show the background clearly */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/10" />
 
       {/* Logo */}
       {showLogo && (
