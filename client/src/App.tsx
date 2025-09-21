@@ -29,7 +29,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <div className="min-h-screen text-white">
+        <div className="min-h-screen text-white" style={{background: 'transparent'}}>
           <Navigation />
           <Router />
           <Footer />
