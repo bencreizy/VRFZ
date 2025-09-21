@@ -16,30 +16,40 @@ const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ showLogo = false, cla
         backgroundColor: 'black' // Fallback background
       }}
     >
-      {/* Circuit board background */}
+      {/* Circuit board background - Debug Mode */}
       <img 
         src="/attached_assets/file_000000001a7c6243b5d6a0a353ce6708_1758424894098.png"
         alt="Circuit board background"
         className="absolute inset-0 w-full h-full object-cover"
         style={{
-          // Temporarily disable animation and filters to test
-          // animation: 'zoom-animation 8s ease-in-out infinite',
-          // filter: 'brightness(0.8) contrast(1.1)'
-          filter: 'none'
+          filter: 'none', // No filters during debugging
+          border: '2px solid red' // Temporary visual debug border
         }}
-        onLoad={() => {
-          console.log('✅ Circuit board image loaded successfully');
-          console.log('Image dimensions and properties:', {
-            naturalWidth: (document.querySelector('img[alt="Circuit board background"]') as HTMLImageElement)?.naturalWidth,
-            naturalHeight: (document.querySelector('img[alt="Circuit board background"]') as HTMLImageElement)?.naturalHeight
+        onLoad={(e) => {
+          const img = e.target as HTMLImageElement;
+          console.log('✅ SUCCESS: Circuit board image loaded!');
+          console.log('📏 Image details:', {
+            src: img.src,
+            naturalWidth: img.naturalWidth,
+            naturalHeight: img.naturalHeight,
+            displayWidth: img.offsetWidth,
+            displayHeight: img.offsetHeight
           });
+          // Remove debug border on successful load
+          img.style.border = 'none';
         }}
         onError={(e) => {
-          console.error('❌ Failed to load circuit board image:', e);
-          console.log('Attempted path: /attached_assets/file_000000001a7c6243b5d6a0a353ce6708_1758424894098.png');
-          console.log('Trying alternative path...');
-          // Fallback to test image
-          (e.target as HTMLImageElement).src = "https://upload.wikimedia.org/wikipedia/commons/9/96/Electronic_Frontier_Foundation_video_conferencing_background_circuit-1_%2828343179979%29.png";
+          const img = e.target as HTMLImageElement;
+          console.error('❌ FAILED: Circuit board image failed to load');
+          console.log('🔍 Debug info:', {
+            attemptedSrc: img.src,
+            currentURL: window.location.href,
+            basePath: window.location.origin
+          });
+          
+          // Try the @assets alias path
+          console.log('🔄 Trying @assets alias path...');
+          img.src = '@assets/file_000000001a7c6243b5d6a0a353ce6708_1758424894098.png';
         }}
       />
 
